@@ -1,5 +1,6 @@
 {
   "name": "my-v0-project",
+  "packageManager": "npm@10.8.1",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -46,6 +47,7 @@
     "cmdk": "latest",
     "date-fns": "4.1.0",
     "embla-carousel-react": "latest",
+    "firebase": "^12.4.0",
     "framer-motion": "latest",
     "input-otp": "latest",
     "lucide-react": "^0.454.0",
