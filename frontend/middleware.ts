@@ -5,15 +5,15 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
   // Public paths
-  if (pathname.startsWith("/login") || pathname.startsWith("/_next") || pathname.startsWith("/api")) {
+  if (pathname.startsWith("/auth") || pathname.startsWith("/_next") || pathname.startsWith("/api")) {
     return NextResponse.next()
   }
 
-  // Very light check: require client auth cookie hint (set below) else send to /login
+  // Very light check: require client auth cookie hint (set below) else send to /auth
   const signedIn = req.cookies.get("x-signed-in")?.value === "1"
   if (!signedIn) {
     const url = req.nextUrl.clone()
-    url.pathname = "/login"
+    url.pathname = "/auth"
     url.searchParams.set("next", pathname)
     return NextResponse.redirect(url)
   }

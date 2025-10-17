@@ -1,4 +1,3 @@
-// frontend/app/settings/page.tsx  (auth redirect built-in)
 "use client"
 
 import { useEffect } from "react"
