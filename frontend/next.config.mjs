@@ -6,6 +6,16 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+  async rewrites() {
+    const API_BASE =
+      process.env.API_INTERNAL_BASE ?? "https://brpg-api.vercel.app";
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${API_BASE}/:path*`,
+      },
+    ];
+  },
+};
 
-export default nextConfig
+export default nextConfig;

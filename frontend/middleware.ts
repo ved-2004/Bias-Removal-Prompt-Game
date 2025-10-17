@@ -1,26 +1,30 @@
-import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
+  const { pathname } = req.nextUrl;
 
   // Public paths
-  if (pathname.startsWith("/auth") || pathname.startsWith("/_next") || pathname.startsWith("/api")) {
-    return NextResponse.next()
+  if (
+    pathname.startsWith("/auth") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api")
+  ) {
+    return NextResponse.next();
   }
 
   // Very light check: require client auth cookie hint (set below) else send to /auth
-  const signedIn = req.cookies.get("x-signed-in")?.value === "1"
+  const signedIn = req.cookies.get("x-signed-in")?.value === "1";
   if (!signedIn) {
-    const url = req.nextUrl.clone()
-    url.pathname = "/auth"
-    url.searchParams.set("next", pathname)
-    return NextResponse.redirect(url)
+    const url = req.nextUrl.clone();
+    url.pathname = "/auth";
+    url.searchParams.set("next", pathname);
+    return NextResponse.redirect(url);
   }
 
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: ["/((?!_next|favicon.ico).*)"],
-}
+};
