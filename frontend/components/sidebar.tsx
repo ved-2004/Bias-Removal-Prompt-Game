@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Brain, Trophy, User, BookOpen, Settings, LogOut } from "lucide-react"
+import { Brain, Trophy, Settings, LogOut } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useToast } from "@/hooks/use-toast"
@@ -10,7 +10,6 @@ import { useToast } from "@/hooks/use-toast"
 const navItems = [
   { href: "/train", label: "Chat Trainer", icon: Brain },
   { href: "/leaderboard", label: "Leaderboard", icon: Trophy, id: "leaderboard-link" },
-  { href: "/profile", label: "Profile", icon: User },
   { href: "/settings", label: "Settings", icon: Settings },
 ]
 

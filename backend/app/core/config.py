@@ -24,5 +24,6 @@ class Settings:
 
     # CORS
     CORS_ALLOW_ORIGINS: List[str] = os.getenv("CORS_ALLOW_ORIGINS", "*").split(",")
+    CORS_ALLOW_ORIGINS_REGEX: List[str] = os.getenv("CORS_ALLOW_ORIGIN_REGEX", None)
 
 settings = Settings()

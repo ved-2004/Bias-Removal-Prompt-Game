@@ -7,12 +7,14 @@ from app.schemas.chat import SampleRequest, SampleResponse, TurnRequest, TurnRes
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.leaderboard import router as leaderboard_router
 from app.routes.me import router as me_router
+from app.core.config import settings
 
 app = FastAPI(title="AI Bias Trainer Backend", version="1.1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "https://your-vercel-app.vercel.app"],
+    allow_origins=settings.CORS_ALLOW_ORIGINS,
+    allow_origin_regex=settings.CORS_ALLOW_ORIGINS_REGEX,
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],    
     allow_headers=["Authorization", "Content-Type", "Accept"],
