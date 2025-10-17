@@ -8,7 +8,8 @@ import { Card } from "@/components/ui/card"
 export default function LoginPage() {
   const router = useRouter()
   const sp = useSearchParams()
-  const next = sp.get("next") || "/"
+  const requested = sp.get("next")
+const next = (!requested || requested === "/login") ? "/train" : requested
 
   const signIn = async () => {
     await signInWithPopup(auth, googleProvider)
