@@ -4,11 +4,21 @@ from app.services.bias import BiasService
 from app.services.vendors import ChatService
 from app.services.firestore import FirestoreService
 from app.schemas.chat import SampleRequest, SampleResponse, TurnRequest, TurnResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="AI Bias Trainer Backend", version="1.1.0")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],    
+    allow_headers=["Authorization", "Content-Type", "Accept"],
+    expose_headers=["*"],
+)
+
 bias_service = BiasService()
-chat_service = ChatService()            # NOTE: already all-OpenRouter-claude as per your change
+chat_service = ChatService() 
 db = FirestoreService()
 
 @app.post("/api/sampleSentence", response_model=SampleResponse)

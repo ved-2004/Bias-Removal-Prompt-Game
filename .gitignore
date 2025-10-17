@@ -57,3 +57,7 @@ backend/firestore_export/
 
 # ---- Misc
 backend/.ipynb_checkpoints/
+
+
+frontend/.env.local
+frontend/node_modules

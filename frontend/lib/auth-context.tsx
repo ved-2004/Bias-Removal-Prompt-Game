@@ -1,9 +1,5 @@
 "use client"
-
 import type React from "react"
-import { createContext, useContext } from "react"
-
-/*
 import { createContext, useContext, useEffect, useState } from "react"
 import { type User, onAuthStateChanged } from "firebase/auth"
 import { auth } from "./firebase"
@@ -29,21 +25,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>
-}
-
-export const useAuth = () => useContext(AuthContext)
-*/
-
-// Mock auth context for frontend preview
-interface AuthContextType {
-  user: any | null
-  loading: boolean
-}
-
-const AuthContext = createContext<AuthContextType>({ user: null, loading: false })
-
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  return <AuthContext.Provider value={{ user: null, loading: false }}>{children}</AuthContext.Provider>
 }
 
 export const useAuth = () => useContext(AuthContext)

@@ -8,11 +8,9 @@ import { cn } from "@/lib/utils"
 import { useToast } from "@/hooks/use-toast"
 
 const navItems = [
-  { href: "/", label: "Train AI", icon: Brain },
   { href: "/train", label: "Chat Trainer", icon: Brain },
   { href: "/leaderboard", label: "Leaderboard", icon: Trophy, id: "leaderboard-link" },
   { href: "/profile", label: "Profile", icon: User },
-  { href: "/educational", label: "Educational Zone", icon: BookOpen },
   { href: "/settings", label: "Settings", icon: Settings },
 ]
 
