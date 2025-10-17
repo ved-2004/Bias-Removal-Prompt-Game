@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.98 0.005 240);
+  --foreground: oklch(0.2 0.01 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 240);
+  --primary: oklch(0.65 0.19 35);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.55 0.22 290);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.5 0.01 240);
+  --accent: oklch(0.65 0.15 230);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.25 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.005 240);
+  --input: oklch(0.96 0.005 240);
+  --ring: oklch(0.65 0.19 35);
+  --chart-1: oklch(0.65 0.19 35);
+  --chart-2: oklch(0.55 0.22 290);
+  --chart-3: oklch(0.65 0.15 230);
+  --chart-4: oklch(0.75 0.15 150);
+  --chart-5: oklch(0.6 0.2 60);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.65 0.19 35);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.2 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.65 0.19 35);
+  --chat-ai-bubble: oklch(0.97 0 0);
+  --chat-user-bubble: oklch(0.205 0 0);
+  --chat-user-bubble-foreground: oklch(0.985 0 0);
+
+  /* Added surface token for cards and panels */
+  --surface: oklch(1 0 0);
+  --surface-foreground: oklch(0.2 0.01 240);
+
+  /* Medal tokens for theme-aware leaderboard medals */
+  --medal-gold-from: #f9d976;
+  --medal-gold-to: #f39f86;
+  --medal-silver-from: #d9dde1;
+  --medal-silver-to: #aeb5bc;
+  --medal-bronze-from: #e3a36b;
+  --medal-bronze-to: #b7743a;
+  --text-on-medal-gold: #3a2d0b;
+  --text-on-medal-silver: #2d3238;
+  --text-on-medal-bronze: #3a2d0b;
+  --medal-outline: rgba(0, 0, 0, 0.18);
+  --medal-shadow: rgba(0, 0, 0, 0.12);
+
+  /* Added chart-specific tokens for theme-aware profile graphs */
+  --chart-bar-1: oklch(0.65 0.19 35);
+  --chart-bar-2: oklch(0.55 0.22 290);
+  --chart-bar-3: oklch(0.65 0.15 230);
+  --chart-fill-1: oklch(0.65 0.19 35 / 0.7);
+  --chart-fill-2: oklch(0.55 0.22 290 / 0.7);
+  --chart-fill-3: oklch(0.65 0.15 230 / 0.7);
+  --chart-grid: oklch(0.92 0.005 240 / 0.4);
+  --chart-text: oklch(0.5 0.01 240);
+}
+
+.dark {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.15 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.15 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.65 0.19 35);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.55 0.22 290);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.6 0.01 240);
+  --accent: oklch(0.65 0.15 230);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.25 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.65 0.19 35);
+  --chart-1: oklch(0.65 0.19 35);
+  --chart-2: oklch(0.55 0.22 290);
+  --chart-3: oklch(0.65 0.15 230);
+  --chart-4: oklch(0.75 0.15 150);
+  --chart-5: oklch(0.6 0.2 60);
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.65 0.19 35);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.2 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.65 0.19 35);
+  --success: oklch(0.65 0.15 150);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.75 0.15 60);
+  --warning-foreground: oklch(0.15 0 0);
+
+  /* Added dark mode surface token */
+  --surface: oklch(0.18 0 0);
+  --surface-foreground: oklch(0.95 0 0);
+
+  /* Dark mode medal tokens with adjusted contrast */
+  --medal-gold-from: #f9d976;
+  --medal-gold-to: #f39f86;
+  --medal-silver-from: #e8ebed;
+  --medal-silver-to: #c5cdd4;
+  --medal-bronze-from: #e3a36b;
+  --medal-bronze-to: #b7743a;
+  --text-on-medal-gold: #ffffff;
+  --text-on-medal-silver: #ffffff;
+  --text-on-medal-bronze: #ffffff;
+  --medal-outline: rgba(255, 255, 255, 0.28);
+  --medal-shadow: rgba(0, 0, 0, 0.4);
+
+  /* Dark mode chart tokens with lighter tones for better contrast */
+  --chart-bar-1: oklch(0.75 0.15 200);
+  --chart-bar-2: oklch(0.7 0.18 280);
+  --chart-bar-3: oklch(0.75 0.12 250);
+  --chart-fill-1: oklch(0.75 0.15 200 / 0.8);
+  --chart-fill-2: oklch(0.7 0.18 280 / 0.8);
+  --chart-fill-3: oklch(0.75 0.12 250 / 0.8);
+  --chart-grid: oklch(0.2 0 0 / 0.4);
+  --chart-text: oklch(0.6 0.01 240);
+}
+
+@theme inline {
+  --font-sans: "Poppins", "Inter", "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-chat-ai-bubble: var(--chat-ai-bubble);
+  --color-chat-user-bubble: var(--chat-user-bubble);
+  --color-chat-user-bubble-foreground: var(--chat-user-bubble-foreground);
+
+  /* Added surface color to theme */
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  *:focus-visible {
+    @apply outline-4 outline-offset-2 outline-purple-500/70;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@keyframes message-bubble-pulse {
+  0%,
+  100% {
+    outline-color: hsl(var(--primary) / 0.4);
+  }
+  50% {
+    outline-color: hsl(var(--primary) / 1);
+  }
+}
+
+.message-bubble-pulsing {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: -2px;
+  animation: message-bubble-pulse 1.6s ease-in-out infinite;
+}
