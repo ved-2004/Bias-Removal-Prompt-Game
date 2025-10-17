@@ -1,5 +1,5 @@
 import { Sidebar } from "@/components/sidebar"
-import { LeaderboardContent } from "@/components/leaderboard-content"
+import LeaderboardContent from "@/components/leaderboard-content"
 
 export default function LeaderboardPage() {
   return (

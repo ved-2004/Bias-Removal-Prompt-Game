@@ -25,7 +25,7 @@ export default function ProfileContent() {
       setBusy(true)
       setErr(null)
       try {
-        const res = await apiGet<MeSummary>("/me/summary")
+        const res = await apiGet<MeSummary>("/api/me/summary")
         if (cancelled) return
         setMe(res ?? null)
       } catch (e: any) {

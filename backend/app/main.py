@@ -5,6 +5,8 @@ from app.services.vendors import ChatService
 from app.services.firestore import FirestoreService
 from app.schemas.chat import SampleRequest, SampleResponse, TurnRequest, TurnResponse
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes.leaderboard import router as leaderboard_router
+from app.routes.me import router as me_router
 
 app = FastAPI(title="AI Bias Trainer Backend", version="1.1.0")
 
@@ -49,3 +51,6 @@ def turn(req: TurnRequest, user=Depends(get_current_user)):
         points_awarded=result.points_awarded,
         history_item=result.history_item.model_dump(),
     )
+
+app.include_router(leaderboard_router)
+app.include_router(me_router)

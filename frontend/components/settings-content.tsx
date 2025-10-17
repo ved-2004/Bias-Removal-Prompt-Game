@@ -32,7 +32,7 @@ export default function SettingsContent() {
       setErr(null)
       setOk(null)
       try {
-        const res = await apiGet<MeSummary>("/me/summary")
+        const res = await apiGet<MeSummary>("/api/me/summary")
         if (cancelled) return
         setMe(res ?? null)
         setUsername(res?.username ?? user?.displayName ?? "")
@@ -55,7 +55,7 @@ export default function SettingsContent() {
     setErr(null)
     setOk(null)
     try {
-      await apiPost("/me/update", { username })
+      await apiPost("/api/me/update", { username })
       setOk("Saved")
     } catch (e: any) {
       setErr(e?.message || "Failed to save")

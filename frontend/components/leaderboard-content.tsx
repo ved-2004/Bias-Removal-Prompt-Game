@@ -38,8 +38,8 @@ export default function LeaderboardContent() {
       setErr(null)
       try {
         const [meRes, lbRes] = await Promise.all([
-          apiGet<MeSummary>("/me/summary"),
-          apiGet<{ items: LeaderboardRow[] }>(`/leaderboard?timeframe=${timeframe}`),
+          apiGet<MeSummary>("/api/me/summary"),
+          apiGet<{ items: LeaderboardRow[] }>(`/api/leaderboard?timeframe=${timeframe}`),
         ])
         if (cancelled) return
         setMe(meRes ?? null)

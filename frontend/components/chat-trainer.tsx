@@ -6,8 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Progress } from "@/components/ui/progress"
 import { cn } from "@/lib/utils"
-import { apiGet, apiPost } from "@/lib/api" // generic helpers that attach Firebase token
-import { fetchSampleSentence } from "@/lib/api"
+import { fetchSampleSentence, doTurn, type Mode } from "@/lib/api"
 
 type Message = {
   id: string
@@ -17,6 +16,12 @@ type Message = {
 }
 
 type BiasType = "gender" | "sexual-orientation" | "age"
+
+const BIAS_TO_MODE: Record<BiasType, Mode> = {
+  "gender": "gpt4-gender",
+  "sexual-orientation": "llama3-sexual",
+  "age": "gemini-age",
+}
 
 export function ChatTrainer() {
   // UI state
@@ -89,15 +94,19 @@ export function ChatTrainer() {
     try {
       // Backend should evaluate and return new score and an assistant reply.
       // Expected shape (flexible): { reply, score, passed, pointsAwarded, history_item? }
-      const payload = { mode: currentSentence, instruction: rewriteInstruction, biasType: selectedBias }
-      const res = await apiPost<any>("/api/turn", payload)
+      const res = await doTurn({
+        mode: BIAS_TO_MODE[selectedBias],
+        original: currentSentence,
+        instruction: rewriteInstruction,
+        messages: [], 
+      })
 
       const reply: string =
         res?.reply ??
         "Thanks! I evaluated your instruction and applied a fairer rewrite."
-      const score: number = typeof res?.score === "number" ? res.score : null
+      const score: number = typeof res?.score === "number" ? res.score*100 : 0
       const passed: boolean = !!res?.passed
-      const points: number = typeof res?.pointsAwarded === "number" ? res.pointsAwarded : 0
+      const points: number = typeof res?.points_awarded === "number" ? res.points_awarded : 0
 
       // assistant message + score bubble
       const aiMsg: Message = {

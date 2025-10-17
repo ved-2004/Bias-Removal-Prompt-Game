@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         <AuthProvider>
           <PageTransition>{children}</PageTransition>
           <Toaster />
