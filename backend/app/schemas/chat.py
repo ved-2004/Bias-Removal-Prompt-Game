@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Literal, Dict, Any
+from typing import List, Literal
 
 Mode = Literal["gpt4-gender", "llama3-sexual", "gemini-age"]
 
@@ -7,21 +7,25 @@ class ChatMessage(BaseModel):
     role: Literal["system", "user", "assistant"]
     content: str
 
-class ChatRequest(BaseModel):
-    mode: Mode
-    messages: List[ChatMessage]
-
-class ChatResponse(BaseModel):
-    reply: str
-
 class SampleRequest(BaseModel):
     mode: Mode
 
 class SampleResponse(BaseModel):
     sentence: str
 
-class ConstrainedChatRequest(BaseModel):
+# NEW: one-turn API
+class TurnRequest(BaseModel):
     mode: Mode
-    original: str         # sentence generated earlier
-    instruction: str      # user’s instruction
-    messages: List[ChatMessage] = []  
+    original: str
+    instruction: str
+    messages: List[ChatMessage] = []
+
+class TurnResponse(BaseModel):
+    reply: str
+    score: float
+    original_score: float
+    delta: float
+    threshold: float
+    passed: bool
+    points_awarded: int
+    history_item: dict

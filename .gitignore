@@ -57,6 +57,3 @@ backend/firestore_export/
 
 # ---- Misc
 backend/.ipynb_checkpoints/
-
-# Frontend
-frontend-web/token.html
